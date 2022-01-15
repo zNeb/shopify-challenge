@@ -6,9 +6,10 @@ export default function Card({
 }: Props) {
   return (
     <div className={styles.card}>
-      {/* Use fill layout as image size is inconsistent */}
+      {/* Only render image if it's availible */}
       {media_type === 'image' && (
       <div className={styles.image}>
+        {/* Use fill layout as image size is inconsistent */}
         <Image src={url} layout="fill" objectFit="cover" />
       </div>
       )}

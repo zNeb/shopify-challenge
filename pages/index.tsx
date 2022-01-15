@@ -9,7 +9,7 @@ export default function Index({ nasaJson }: Props) {
     <Layout>
       <Head>
         <title>
-          Title
+          NASA Astronomy Picture of the day
         </title>
       </Head>
       <section>

@@ -15,7 +15,7 @@ const nextConfig = {
     // Cache images
     minimumCacheTTL: 2678400,
     domains: [
-      'api.nasa.gov',
+      'apod.nasa.gov',
     ],
   },
 };

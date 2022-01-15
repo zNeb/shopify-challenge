@@ -1,0 +1,25 @@
+.card {
+  width: 400px;
+  background: #f4f4f4;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.image {
+  position: relative;
+  height: 300px;
+  margin-bottom: 10px;
+}
+
+.title {
+  display: block;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+.explanation {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

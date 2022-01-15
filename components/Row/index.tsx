@@ -3,10 +3,10 @@ import styles from './Row.module.css';
 
 interface RowProps {
   children: ReactNode;
-  itemWidth?: number | string;
-  columns?: number | string;
-  gap?: number | string;
-  breakItem?: number | string;
+  itemWidth?: number;
+  columns?: number;
+  gap?: number;
+  breakItem?: number;
 }
 
 export default function Row({

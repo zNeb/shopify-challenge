@@ -3,6 +3,9 @@ import Head from 'next/head';
 
 import { GetStaticProps } from 'next';
 import Card from 'components/Card';
+import Section from 'components/Section';
+import Container from 'components/Container';
+import Row from 'components/Row';
 
 export default function Index({ nasaJson }: Props) {
   return (
@@ -12,11 +15,15 @@ export default function Index({ nasaJson }: Props) {
           NASA Astronomy Picture of the day
         </title>
       </Head>
-      <section>
-        {nasaJson.map((apod) => (
-          <Card {...apod} key={apod.title} />
-        ))}
-      </section>
+      <Section>
+        <Container>
+          <Row itemWidth={350}>
+            {nasaJson.slice(1).map((apod) => (
+              <Card {...apod} key={apod.title} />
+            ))}
+          </Row>
+        </Container>
+      </Section>
     </Layout>
   );
 }

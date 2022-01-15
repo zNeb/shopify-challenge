@@ -13,6 +13,18 @@ export default function Card({
         <Image src={url} layout="fill" objectFit="cover" />
       </div>
       )}
+      {/* If APOD is a youtube video include an embed */}
+      {media_type === 'video' && (
+        <iframe
+          width="100%"
+          height="300"
+          src={url}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      ) }
       <span className={styles.title}>
         {title}
       </span>

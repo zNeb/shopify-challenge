@@ -2,7 +2,7 @@ import Image from 'next/image';
 import styles from './Card.module.css';
 
 export default function Card({
-  date, explanation, hdurl, media_type, title, url,
+  date, explanation, media_type, title, url,
 }: Props) {
   return (
     <div className={styles.card}>
@@ -39,7 +39,6 @@ export default function Card({
 interface Props {
   date: string;
   explanation: string;
-  hdurl: string;
   media_type: 'image' | 'video';
   title: string;
   url: string;

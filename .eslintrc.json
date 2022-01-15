@@ -36,6 +36,8 @@
       }
     ],
     // Use default parameters instead
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    // Allow {...props}
+    "react/jsx-props-no-spreading": "off"
   }
 }

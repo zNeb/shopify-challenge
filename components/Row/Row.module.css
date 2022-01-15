@@ -1,0 +1,58 @@
+.row {
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(100%, var(--width)), 1fr)
+  );
+  justify-content: space-evenly;
+  display: grid;
+  gap: var(--gap);
+}
+
+.columns {
+  grid-template-columns: repeat(var(--columns), 1fr);
+}
+
+.item {
+  grid-column: span var(--span);
+  width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .xl > .item {
+    grid-column: span var(--columns);
+  }
+}
+
+@media (max-width: 1000px) {
+  .lg > .item {
+    grid-column: span var(--columns);
+  }
+}
+
+@media (max-width: 800px) {
+  .md > .item {
+    grid-column: span var(--columns);
+  }
+}
+
+@media (max-width: 600px) {
+  .sm > .item {
+    grid-column: span var(--columns);
+  }
+}
+
+.xAxis {
+  display: flex;
+  justify-content: center;
+}
+
+.yAxis {
+  display: flex;
+  align-items: center;
+}
+
+.xyAxis {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

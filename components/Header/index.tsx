@@ -1,3 +1,9 @@
 export default function Header() {
-  return <>Header</>;
+  return (
+    <header>
+      <nav>
+        Header
+      </nav>
+    </header>
+  );
 }

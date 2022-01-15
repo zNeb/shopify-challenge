@@ -5,9 +5,13 @@ export default function Index() {
   return (
     <Layout>
       <Head>
-        <title>Title</title>
+        <title>
+          Title
+        </title>
       </Head>
-      Content
+      <section>
+        Content
+      </section>
     </Layout>
   );
 }

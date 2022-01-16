@@ -7,6 +7,7 @@ import Section from 'components/Section';
 import Container from 'components/Container';
 import Row from 'components/Row';
 import MainCard from 'components/MainCard';
+import Heading from 'components/Heading';
 
 export default function Index({ nasaJson }: Props) {
   const [apodToday] = nasaJson;
@@ -23,6 +24,10 @@ export default function Index({ nasaJson }: Props) {
       </Section>
       <Section>
         <Container>
+          <Heading>
+            Past Days
+          </Heading>
+          {/* todo: add date picker to right of heading */}
           <Row itemWidth={350}>
             {apodPrevious.map((apod) => (
               <Card {...apod} key={apod.date} />

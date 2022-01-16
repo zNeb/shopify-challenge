@@ -7,6 +7,7 @@
 .image {
   position: relative;
   height: 300px;
+  background-color: #000;
 }
 
 .content {
@@ -18,13 +19,24 @@
   font-weight: 600;
   font-size: 1.4rem;
   margin-top: 8px;
-}
-
-.explanation {
-  display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.explanation {
+  /* Non standard way to clamp multiline text, but works in all modern browsers with no js */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  margin: 4px 0;
+}
+
+.date {
+  font-weight: 600;
+  ont-size: 0.95em;
 }
 
 .copyright {
@@ -34,4 +46,23 @@
   right: 5px;
   font-size: 0.5em;
   user-select: none;
+}
+
+.info {
+  width: max-content;
+  display: block;
+  padding: 5px;
+  padding-top: 0;
+  font-weight: 600;
+  font-size: 1.1em;
+  margin-right: 8px;
+  margin-bottom: 5px;
+  margin-left: auto;
+  user-select: none;
+  & svg {
+    vertical-align: sub;
+  }
+  &:hover {
+    color: red;
+  }
 }

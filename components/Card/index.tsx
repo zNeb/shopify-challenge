@@ -1,5 +1,6 @@
 import Vote from 'components/Vote';
 import Image from 'next/image';
+import { FaCaretRight } from 'react-icons/fa';
 import styles from './Card.module.css';
 
 export default function Card({
@@ -38,14 +39,21 @@ export default function Card({
       </div>
       ) }
       <div className={styles.content}>
-        <span className={styles.title}>
+        <span title={title} className={styles.title}>
           {title}
         </span>
         <span className={styles.explanation}>
           {explanation}
         </span>
-        {date}
+        <span className={styles.date}>
+          {date}
+        </span>
       </div>
+      <a className={styles.info} href={`/day/${date}`}>
+        More Details
+        {' '}
+        <FaCaretRight />
+      </a>
     </div>
   );
 }

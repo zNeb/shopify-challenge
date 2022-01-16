@@ -25,13 +25,15 @@ export default function Card({
           allowFullScreen
         />
       ) }
-      <span className={styles.title}>
-        {title}
-      </span>
-      <span className={styles.explanation}>
-        {explanation}
-      </span>
-      {date}
+      <div className={styles.content}>
+        <span className={styles.title}>
+          {title}
+        </span>
+        <span className={styles.explanation}>
+          {explanation}
+        </span>
+        {date}
+      </div>
     </div>
   );
 }

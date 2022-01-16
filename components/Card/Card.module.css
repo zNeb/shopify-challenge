@@ -9,6 +9,10 @@
   height: 300px;
 }
 
+.content {
+  margin: 10px;
+}
+
 .title {
   display: block;
   font-weight: 600;

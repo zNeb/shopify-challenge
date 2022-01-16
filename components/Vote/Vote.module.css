@@ -1,0 +1,39 @@
+.votes {
+  all: unset;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 1.5em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.1s all ease-in;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  box-sizing: border-box;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.voted {
+  color: #b760e2;
+  animation: like 0.2s linear 1;
+}
+
+@keyframes like {
+  15% {
+    transform: scale(0.7) rotate(0.01turn);
+  }
+  35% {
+    transform: scale(0.2) rotate(0.05turn);
+  }
+  60% {
+    transform: scale(1.4) rotate(-0.02turn);
+  }
+  100% {
+    transform: scale(1) rotate(0turn);
+  }
+}

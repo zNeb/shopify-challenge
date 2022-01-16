@@ -1,30 +1,22 @@
-import Vote from 'components/Vote';
 import Image from 'next/image';
-import styles from './Card.module.css';
+import styles from './MainCard.module.css';
 
-export default function Card({
-  date, explanation, media_type, title, url, copyright,
+export default function MainCard({
+  date, explanation, media_type, title, hdurl, url,
 }: Props) {
+  const highestQualityUrl = hdurl ?? url;
+
   return (
     <div className={styles.card}>
       {/* Only render image if it's availible */}
       {media_type === 'image' && (
       <div className={styles.image}>
         {/* Use fill layout as image size is inconsistent */}
-        <Image src={url} layout="fill" objectFit="cover" />
-        {copyright && (
-        <span className={styles.copyright}>
-          ©
-          {' '}
-          {copyright}
-        </span>
-        )}
-        <Vote date={date} />
+        <Image src={highestQualityUrl} layout="fill" objectFit="cover" />
       </div>
       )}
       {/* If APOD is a youtube video include an embed */}
       {media_type === 'video' && (
-      <div className={styles.image}>
         <iframe
           width="100%"
           height="300"
@@ -34,8 +26,6 @@ export default function Card({
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />
-        <Vote date={date} />
-      </div>
       ) }
       <div className={styles.content}>
         <span className={styles.title}>
@@ -55,6 +45,6 @@ interface Props {
   explanation: string;
   media_type: 'image' | 'video';
   title: string;
+  hdurl?: string;
   url: string;
-  copyright?: string;
 }

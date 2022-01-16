@@ -6,8 +6,11 @@ import Card from 'components/Card';
 import Section from 'components/Section';
 import Container from 'components/Container';
 import Row from 'components/Row';
+import MainCard from 'components/MainCard';
 
 export default function Index({ nasaJson }: Props) {
+  const [apodToday] = nasaJson;
+  const apodPrevious = nasaJson.slice(1);
   return (
     <Layout>
       <Head>
@@ -16,10 +19,13 @@ export default function Index({ nasaJson }: Props) {
         </title>
       </Head>
       <Section>
+        <MainCard {...apodToday} />
+      </Section>
+      <Section>
         <Container>
           <Row itemWidth={350}>
-            {nasaJson.slice(1).map((apod) => (
-              <Card {...apod} key={apod.title} />
+            {apodPrevious.map((apod) => (
+              <Card {...apod} key={apod.date} />
             ))}
           </Row>
         </Container>
@@ -66,4 +72,5 @@ interface NasaJson {
   service_version: 'v1';
   title: string;
   url: string;
+  copyright?: string;
 }

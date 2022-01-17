@@ -1,0 +1,13 @@
+.dateRange {
+  position: relative;
+}
+
+.button {
+}
+
+.datePicker {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 100;
+}

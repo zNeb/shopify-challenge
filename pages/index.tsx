@@ -9,6 +9,7 @@ import Container from 'components/Container';
 import Row from 'components/Row';
 import Heading from 'components/Heading';
 import getDate from 'lib/getDate';
+import DateRange from 'components/DateRange';
 
 export default function Index({ nasaJson }: Props) {
   const [apodToday] = nasaJson;
@@ -25,9 +26,12 @@ export default function Index({ nasaJson }: Props) {
       </Section>
       <Section>
         <Container>
-          <Heading>
-            Past Days
-          </Heading>
+          <div style={{ display: 'flex' }}>
+            <Heading>
+              Past Days
+            </Heading>
+            <DateRange />
+          </div>
           {/* todo: add date picker to right of heading */}
           <Row itemWidth={350}>
             {apodPrevious.map((apod) => (

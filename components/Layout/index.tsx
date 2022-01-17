@@ -1,3 +1,4 @@
+import Progress from 'components/Progress';
 import type { ReactNode } from 'react';
 import Footer from '../Footer';
 import Header from '../Header';
@@ -11,6 +12,7 @@ export default function Layout({ children }: Props) {
       <Header />
       {children}
       <Footer />
+      <Progress />
     </>
   );
 }

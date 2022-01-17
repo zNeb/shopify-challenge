@@ -1,5 +1,6 @@
 import Vote from 'components/Vote';
 import Image from 'next/image';
+import Link from 'next/link';
 import { FaCaretRight } from 'react-icons/fa';
 import cardStyles from './Card.module.css';
 import mainStyles from './MainCard.module.css';
@@ -51,11 +52,13 @@ export default function Card({
           {date}
         </span>
       </div>
-      <a className={styles.info} href={`/day/${date}`}>
-        More Details
-        {' '}
-        <FaCaretRight />
-      </a>
+      <Link href={`/day/${date}`}>
+        <a className={styles.info}>
+          More Details
+          {' '}
+          <FaCaretRight />
+        </a>
+      </Link>
     </div>
   );
 }

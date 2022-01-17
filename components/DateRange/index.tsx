@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import type { RangeKeyDict } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
@@ -21,7 +21,7 @@ export default function DateRange() {
     key: 'selection',
   };
 
-  // Import Date range dynamically so it's only requested when needed (Same as React.lazy)
+  // Import Date range dynamically so it's only requested when needed (Similar to React.lazy)
   const dateRangePickerImport = () => import('react-date-range').then((mod) => mod.DateRangePicker);
   const DateRangePicker = dynamic(dateRangePickerImport);
 

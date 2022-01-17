@@ -9,23 +9,25 @@
 }
 
 .logo {
-  font-size: 1.4em;
-  font-weight: 600;
+  font-size: 1.8em;
+  font-weight: 700;
   display: block;
   margin: auto;
-  color: rebeccapurple;
+  color: var(--accent-color);
+  flex-grow: 1;
 }
 
 .items {
   margin: 0;
   list-style-type: none;
   display: flex;
-  flex-grow: 1;
   padding: 0;
   padding-left: 10px;
 }
 
 .item {
   font-size: 1.1em;
+  font-weight: 600;
+  color: #2c2c2c;
   padding: 25px 10px;
 }

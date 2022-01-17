@@ -21,11 +21,13 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
-        <span className={styles.logo}>
-          NASA APOD
-        </span>
+        <Link href="/">
+          <a className={styles.logo}>
+            NASA APOD
+          </a>
+        </Link>
         <ul className={styles.items}>
-          <Item href="helo">itemname</Item>
+          <Item href="/">Home</Item>
         </ul>
       </nav>
     </header>

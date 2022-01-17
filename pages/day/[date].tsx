@@ -7,7 +7,6 @@ import getDate from 'lib/getDate';
 import type { NasaJson } from 'components/Card';
 import Showcase from 'components/Showcase';
 import Container from 'components/Container';
-import Header from 'components/Header';
 import Heading from 'components/Heading';
 import Bold from 'components/Bold';
 

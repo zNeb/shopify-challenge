@@ -1,0 +1,76 @@
+.card {
+  background: #f4f4f4;
+  overflow: hidden;
+  position: relative;
+}
+
+.image {
+  position: relative;
+  height: 800px;
+  background-color: #000;
+}
+
+.content {
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+  color: #fff;
+  padding: 18px;
+  background: #000000ba;
+}
+
+.title {
+  display: block;
+  font-weight: 600;
+  font-size: 1.4rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.explanation {
+  /* Non standard way to clamp multiline text, but works in all modern browsers with no js */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  margin: 4px 0;
+}
+
+.date {
+  font-weight: 600;
+  font-size: 0.95em;
+}
+
+.copyright {
+  color: #fff;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  font-size: 0.5em;
+  user-select: none;
+}
+
+.info {
+  position: absolute;
+  padding: 5px;
+  padding-top: 0;
+  font-weight: 600;
+  font-size: 1.1em;
+  margin-right: 8px;
+  margin-bottom: 5px;
+  margin-left: auto;
+  user-select: none;
+  color: #fff;
+  bottom: 5px;
+  right: 0;
+  transition: 0.1s color ease-in;
+  & svg {
+    vertical-align: sub;
+  }
+  &:hover {
+    color: #ea3660;
+  }
+}

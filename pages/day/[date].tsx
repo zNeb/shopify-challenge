@@ -2,10 +2,14 @@ import Layout from 'components/Layout';
 import Head from 'next/head';
 
 import { GetStaticProps, GetStaticPaths } from 'next';
-import Card from 'components/Card';
 import Section from 'components/Section';
 import getDate from 'lib/getDate';
 import type { NasaJson } from 'components/Card';
+import Showcase from 'components/Showcase';
+import Container from 'components/Container';
+import Header from 'components/Header';
+import Heading from 'components/Heading';
+import Bold from 'components/Bold';
 
 export default function Index({ nasaJson }: Props) {
   return (
@@ -16,21 +20,48 @@ export default function Index({ nasaJson }: Props) {
         </title>
       </Head>
       <Section>
-        <Card {...nasaJson} main />
+        <Showcase {...nasaJson} />
+      </Section>
+      <Section>
+        <Container>
+          <Heading>
+            {nasaJson.title}
+          </Heading>
+          {nasaJson.explanation}
+          <Bold>
+            Date:
+            {' '}
+            {nasaJson.date}
+          </Bold>
+        </Container>
       </Section>
     </Layout>
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const apiKey = process.env.NASA_KEY;
 
   if (!apiKey) {
     throw new Error('NASA api key missing');
   }
 
-  const nasaData = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NASA_KEY}`);
+  if (!params?.date) {
+    return {
+      notFound: true,
+      revalidate: 60,
+    };
+  }
+
+  const nasaData = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NASA_KEY}&date=${params.date}`);
   const nasaJson = await nasaData.json();
+
+  if (nasaJson.msg) {
+    return {
+      notFound: true,
+      revalidate: 60,
+    };
+  }
 
   return {
     props: {

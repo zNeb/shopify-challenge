@@ -1,24 +1,38 @@
+import getDate from 'lib/getDate';
 import dynamic from 'next/dynamic';
-import { useState } from 'react';
+import {
+  Dispatch, memo, SetStateAction, useState,
+} from 'react';
 import type { RangeKeyDict } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import styles from './DateRange.module.css';
 import useClose from './useClose';
 
-export default function DateRange() {
+function DateRange({ setRange }: Props) {
   const [showDatePicker, setShowDatePicker] = useState(false);
 
   const ref = useClose(showDatePicker, setShowDatePicker);
 
-  const onSelect = (ranges: RangeKeyDict) => {
-    console.log(ranges);
-  };
+  // Make the rany 100 days ago to today to limit dom size
+  const { startDate: minDate, endDate: maxDate } = getDate(100);
+
+  const { startDate, endDate } = getDate(20);
 
   const selectionRange = {
-    startDate: new Date(),
-    endDate: new Date(),
+    startDate: new Date(startDate),
+    endDate: new Date(endDate),
     key: 'selection',
+  };
+
+  const onSelect = (ranges: RangeKeyDict) => {
+    const { startDate: newStartDate, endDate: newEndDate } = ranges.selection;
+    if (newStartDate && newEndDate) {
+      selectionRange.startDate = new Date(newStartDate);
+      selectionRange.endDate = new Date(newEndDate);
+
+      setRange({ startDate: newStartDate, endDate: newEndDate });
+    }
   };
 
   // Import Date range dynamically so it's only requested when needed (Similar to React.lazy)
@@ -39,8 +53,17 @@ export default function DateRange() {
           className={styles.datePicker}
           ranges={[selectionRange]}
           onChange={onSelect}
+          minDate={new Date(minDate)}
+          maxDate={new Date(maxDate)}
+          staticRanges={[]}
         />
       )}
     </div>
   );
 }
+
+interface Props {
+  setRange: Dispatch<SetStateAction<any>>;
+}
+
+export default memo(DateRange);

@@ -11,10 +11,34 @@ import Heading from 'components/Heading';
 import getDate from 'lib/getDate';
 import DateRange from 'components/DateRange';
 import FlexSide from 'components/FlexSide';
+import { useEffect, useState } from 'react';
 
 export default function Index({ nasaJson }: Props) {
   const [apodToday] = nasaJson;
-  const apodPrevious = nasaJson.slice(1);
+  const [apodPrevious, setApodPrevious] = useState(nasaJson.slice(1));
+
+  const [range, setRange] = useState<DateObject>({ startDate: null, endDate: null });
+
+  const setApod = async () => {
+    if (range.startDate && range.endDate) {
+      try {
+        const nasaData = await fetch(`/api/fetchNasaRange?start_date=${range.startDate.toISOString().split('T')[0]}&end_date=${range.endDate.toISOString().split('T')[0]}`);
+        const nasaJsonNew = await nasaData.json();
+
+        if (nasaJsonNew.msg) {
+          throw new Error();
+        }
+
+        setApodPrevious(nasaJsonNew as NasaJson[]);
+      } catch {
+        //
+      }
+    }
+  };
+
+  useEffect(() => {
+    setApod();
+  }, [range]);
   return (
     <Layout>
       <Head>
@@ -31,7 +55,7 @@ export default function Index({ nasaJson }: Props) {
             <Heading>
               Past Days
             </Heading>
-            <DateRange />
+            <DateRange setRange={setRange} />
           </FlexSide>
           {/* todo: add date picker to right of heading */}
           <Row itemWidth={350}>
@@ -68,4 +92,9 @@ export const getStaticProps: GetStaticProps = async () => {
 
 interface Props {
   nasaJson: NasaJson[];
+}
+
+interface DateObject {
+  startDate: Date | null;
+  endDate: Date | null;
 }

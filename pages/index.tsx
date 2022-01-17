@@ -6,7 +6,6 @@ import Card from 'components/Card';
 import Section from 'components/Section';
 import Container from 'components/Container';
 import Row from 'components/Row';
-import MainCard from 'components/MainCard';
 import Heading from 'components/Heading';
 
 export default function Index({ nasaJson }: Props) {
@@ -20,7 +19,7 @@ export default function Index({ nasaJson }: Props) {
         </title>
       </Head>
       <Section>
-        <MainCard {...apodToday} />
+        <Card {...apodToday} main />
       </Section>
       <Section>
         <Container>

@@ -9,7 +9,7 @@
   font-size: 1.5em;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.1s all ease-in;
+  transition: 0.2s all ease-in;
   position: absolute;
   top: 15px;
   right: 15px;
@@ -21,7 +21,7 @@
 }
 
 .voted {
-  color: #b760e2;
+  color: #ea3660;
   animation: like 0.2s linear 1;
 }
 

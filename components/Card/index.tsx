@@ -1,18 +1,20 @@
 import Vote from 'components/Vote';
 import Image from 'next/image';
 import { FaCaretRight } from 'react-icons/fa';
-import styles from './Card.module.css';
+import cardStyles from './Card.module.css';
+import mainStyles from './MainCard.module.css';
 
 export default function Card({
-  date, explanation, media_type, title, url, copyright,
+  date, explanation, media_type, title, url, hdurl, copyright, main,
 }: Props) {
+  const styles = main ? mainStyles : cardStyles;
   return (
     <div className={styles.card}>
       {/* Only render image if it's availible */}
       {media_type === 'image' && (
       <div className={styles.image}>
         {/* Use fill layout as image size is inconsistent */}
-        <Image src={url} layout="fill" objectFit="cover" />
+        <Image src={(main && hdurl) ? hdurl : url} layout="fill" objectFit="cover" />
         {copyright && (
         <span className={styles.copyright}>
           ©
@@ -64,5 +66,7 @@ interface Props {
   media_type: 'image' | 'video';
   title: string;
   url: string;
+  hdurl?: string;
   copyright?: string;
+  main?: boolean;
 }

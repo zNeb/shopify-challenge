@@ -28,6 +28,7 @@ export default function Card({
       )}
       {/* If APOD is a youtube video include an embed */}
       {media_type === 'video' && (
+
       <div className={styles.image}>
         <iframe
           width="100%"
@@ -35,7 +36,7 @@ export default function Card({
           src={url}
           title="YouTube video player"
           frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
           allowFullScreen
         />
         <Vote date={date} />

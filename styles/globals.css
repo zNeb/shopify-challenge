@@ -18,4 +18,5 @@ a {
 :root {
   --light-grey: #f4f4f4;
   --accent-color: #ea3660;
+  --focus-color: #ea366040;
 }

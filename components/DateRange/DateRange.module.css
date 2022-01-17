@@ -3,11 +3,28 @@
 }
 
 .button {
+  all: unset;
+  background: var(--accent-color);
+  padding: 6px 20px;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: all 0.1s ease-in;
+  user-select: none;
+  &:hover {
+    filter: brightness(1.1);
+  }
+  &:focus {
+    box-shadow: 0 0 0 4px var(--focus-color);
+  }
 }
 
 .datePicker {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 6px);
   right: 0;
   z-index: 100;
+  border: 1px solid var(--accent-color);
 }

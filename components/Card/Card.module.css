@@ -1,5 +1,5 @@
 .card {
-  background: #f4f4f4;
+  background: var(--light-grey);
   border-radius: 16px;
   overflow: hidden;
 }

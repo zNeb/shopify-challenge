@@ -70,3 +70,14 @@ interface Props {
   copyright?: string;
   main?: boolean;
 }
+
+export interface NasaJson {
+  date: string;
+  explanation: string;
+  hdurl: string;
+  media_type: 'image' | 'video';
+  service_version: 'v1';
+  title: string;
+  url: string;
+  copyright?: string;
+}

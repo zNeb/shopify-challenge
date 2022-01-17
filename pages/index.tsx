@@ -3,10 +3,12 @@ import Head from 'next/head';
 
 import { GetStaticProps } from 'next';
 import Card from 'components/Card';
+import type { NasaJson } from 'components/Card';
 import Section from 'components/Section';
 import Container from 'components/Container';
 import Row from 'components/Row';
 import Heading from 'components/Heading';
+import getDate from 'lib/getDate';
 
 export default function Index({ nasaJson }: Props) {
   const [apodToday] = nasaJson;
@@ -45,18 +47,13 @@ export const getStaticProps: GetStaticProps = async () => {
     throw new Error('NASA api key missing');
   }
 
-  // Gets today's date and the day 20 days ago into a YYYY-MM-DD string
-  const date = new Date();
-  const endDate = date.toISOString().split('T')[0];
-  date.setDate(date.getDate() - 20);
-  const startDate = date.toISOString().split('T')[0];
+  const { startDate, endDate } = getDate(20);
 
   const nasaData = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NASA_KEY}&start_date=${startDate}&end_date=${endDate}`);
   const nasaJson = await nasaData.json();
 
   return {
     props: {
-      // Only send required data
       nasaJson: nasaJson.reverse(),
     },
     // Refetch at most once per minute
@@ -66,15 +63,4 @@ export const getStaticProps: GetStaticProps = async () => {
 
 interface Props {
   nasaJson: NasaJson[];
-}
-
-interface NasaJson {
-  date: string;
-  explanation: string;
-  hdurl: string;
-  media_type: 'image' | 'video';
-  service_version: 'v1';
-  title: string;
-  url: string;
-  copyright?: string;
 }

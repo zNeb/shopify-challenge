@@ -32,7 +32,7 @@ export default function DateRange() {
         type="button"
         onClick={() => { setShowDatePicker(!showDatePicker); }}
       >
-        Select Date
+        Select Range
       </button>
       {showDatePicker && (
         <DateRangePicker

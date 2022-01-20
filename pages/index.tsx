@@ -45,6 +45,10 @@ export default function Index({ nasaJson }: Props) {
         <title>
           NASA Astronomy Picture of the day
         </title>
+        <meta
+          name="description"
+          content="View the NASA Astronomy Picture of the day."
+        />
       </Head>
       <Section>
         <Card {...apodToday} main />

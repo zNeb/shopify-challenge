@@ -15,8 +15,14 @@ export default function Index({ nasaJson }: Props) {
     <Layout>
       <Head>
         <title>
-          NASA Astronomy Picture of the day
+          {nasaJson.date}
+          {' '}
+          - NASA Astronomy Picture of the day
         </title>
+        <meta
+          name="description"
+          content={`View the NASA Astronomy Picture of the day for ${nasaJson.date}.`}
+        />
       </Head>
       <Section>
         <Showcase {...nasaJson} />

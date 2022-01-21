@@ -1,0 +1,28 @@
+.videoButton {
+  all: unset;
+  box-sizing: border-box;
+  color: #fff;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  font-weight: 600;
+  font-size: 1.4rem;
+  flex-direction: column;
+  cursor: pointer;
+  transition: 0.1s all ease-in;
+  user-select: none;
+  & svg {
+    font-size: 5rem;
+  }
+  &:hover {
+    color: var(--accent-color);
+  }
+  &:focus {
+    border: 2px dashed var(--accent-color);
+    border-radius: 16px 16px 0 0;
+  }
+}

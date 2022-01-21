@@ -1,3 +1,4 @@
+import Play from 'components/Play';
 import Vote from 'components/Vote';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,6 +10,7 @@ export default function Card({
   date, explanation, media_type, title, url, hdurl, copyright, main,
 }: Props) {
   const styles = main ? mainStyles : cardStyles;
+
   return (
     <div className={styles.card}>
       {/* Only render image if it's availible */}
@@ -33,18 +35,19 @@ export default function Card({
       )}
       {/* If APOD is a youtube video include an embed */}
       {media_type === 'video' && (
-
       <div className={styles.image}>
-        <iframe
-          width="100%"
-          height="300"
-          src={url}
-          title={`${title} Video`}
-          frameBorder="0"
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
-          allowFullScreen
-        />
-        <Vote date={date} />
+        <Play>
+          <iframe
+            width="100%"
+            height="300"
+            src={url}
+            title={`${title} Video`}
+            frameBorder="0"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+            allowFullScreen
+          />
+          <Vote date={date} />
+        </Play>
       </div>
       ) }
       <div className={styles.content}>

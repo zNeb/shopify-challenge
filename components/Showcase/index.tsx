@@ -1,3 +1,4 @@
+import Play from 'components/Play';
 import Vote from 'components/Vote';
 import Image from 'next/image';
 import styles from './Showcase.module.css';
@@ -29,18 +30,20 @@ export default function Showcase({
       )}
       {/* If APOD is a youtube video include an embed */}
       {media_type === 'video' && (
-      <div className={styles.image}>
-        <iframe
-          width="100%"
-          height="800"
-          src={url}
-          title={`${title} Video`}
-          frameBorder="0"
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
-          allowFullScreen
-        />
-        <Vote date={date} />
-      </div>
+        <div className={styles.image}>
+          <Play>
+            <iframe
+              width="100%"
+              height="800"
+              src={url}
+              title={`${title} Video`}
+              frameBorder="0"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+              allowFullScreen
+            />
+            <Vote date={date} />
+          </Play>
+        </div>
       )}
     </div>
   );

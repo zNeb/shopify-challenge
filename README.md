@@ -1,5 +1,5 @@
 # NASA APOD
-This is a project mad for the Shopify Front End Developer Intern Challenge.
+This is a project made for the Shopify Front End Developer Intern Challenge.
 
 ## Demo Link
 https://shopify-challenge-snowy.vercel.app/
@@ -20,6 +20,9 @@ npm run dev
 npm install
 npm run build
 npm run start
+
+# Test
+npm run test
 ```
 
 ## Showcase

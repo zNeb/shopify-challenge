@@ -66,4 +66,7 @@
   &:hover {
     color: #ea3660;
   }
+  &:focus {
+    outline: 1px dashed blue;
+  }
 }

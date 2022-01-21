@@ -12,6 +12,7 @@
   "dependencies": {
     "@badrap/bar-of-progress": "^0.1.2",
     "@fontsource/roboto": "^4.5.1",
+    "@reach/skip-nav": "^0.16.0",
     "date-fns": "^2.28.0",
     "next": "12.0.8",
     "normalize.css": "^8.0.1",

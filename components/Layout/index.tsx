@@ -4,7 +4,6 @@ import Head from 'next/head';
 import type { ReactNode } from 'react';
 import Footer from '../Footer';
 import Header from '../Header';
-import '@reach/skip-nav/styles.css';
 
 interface Props {
   children: ReactNode;

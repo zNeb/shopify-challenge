@@ -59,7 +59,7 @@ export default function Index({ nasaJson }: Props) {
             <Heading>
               Past Days
             </Heading>
-            <DateRange setRange={setRange} />
+            <DateRange range={range} setRange={setRange} />
           </FlexSide>
           {/* todo: add date picker to right of heading */}
           <Row itemWidth={350}>

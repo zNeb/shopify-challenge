@@ -1,16 +1,19 @@
 import getDate from 'lib/getDate';
 import dynamic from 'next/dynamic';
 import {
-  Dispatch, memo, SetStateAction, useState,
+  memo, useEffect, useRef, useState,
 } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import type { RangeKeyDict } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import styles from './DateRange.module.css';
 import useClose from './useClose';
 
-function DateRange({ setRange }: Props) {
+function DateRange({ range, setRange }: Props) {
   const [showDatePicker, setShowDatePicker] = useState(false);
+
+  const rangeRef = useRef<DateObject | null>(null);
 
   const ref = useClose(showDatePicker, setShowDatePicker);
 
@@ -20,8 +23,8 @@ function DateRange({ setRange }: Props) {
   const { startDate, endDate } = getDate(20);
 
   const selectionRange = {
-    startDate: new Date(startDate),
-    endDate: new Date(endDate),
+    startDate: range.startDate || new Date(startDate),
+    endDate: range.endDate || new Date(endDate),
     key: 'selection',
   };
 
@@ -31,9 +34,15 @@ function DateRange({ setRange }: Props) {
       selectionRange.startDate = new Date(newStartDate);
       selectionRange.endDate = new Date(newEndDate);
 
-      setRange({ startDate: newStartDate, endDate: newEndDate });
+      rangeRef.current = { startDate: newStartDate, endDate: newEndDate };
     }
   };
+
+  useEffect(() => {
+    if (!showDatePicker && rangeRef.current) {
+      setRange(rangeRef.current);
+    }
+  }, [showDatePicker]);
 
   // Import Date range dynamically so it's only requested when needed (Similar to React.lazy)
   const dateRangePickerImport = () => import('react-date-range').then((mod) => mod.DateRangePicker);
@@ -46,7 +55,7 @@ function DateRange({ setRange }: Props) {
         type="button"
         onClick={() => { setShowDatePicker(!showDatePicker); }}
       >
-        Select Range
+        {!showDatePicker ? 'Select Range' : 'Save Range'}
       </button>
       {showDatePicker && (
         <DateRangePicker
@@ -62,7 +71,13 @@ function DateRange({ setRange }: Props) {
   );
 }
 
+interface DateObject {
+  startDate: Date | null;
+  endDate: Date | null;
+}
+
 interface Props {
+  range: DateObject;
   setRange: Dispatch<SetStateAction<any>>;
 }
 

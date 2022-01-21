@@ -15,7 +15,12 @@ export default function Card({
       {media_type === 'image' && (
       <div className={styles.image}>
         {/* Use fill layout as image size is inconsistent */}
-        <Image src={(main && hdurl) ? hdurl : url} layout="fill" objectFit="cover" />
+        <Image
+          src={(main && hdurl) ? hdurl : url}
+          layout="fill"
+          objectFit="cover"
+          alt={`${title} Image`}
+        />
         {copyright && (
         <span className={styles.copyright}>
           ©
@@ -34,7 +39,7 @@ export default function Card({
           width="100%"
           height="300"
           src={url}
-          title="YouTube video player"
+          title={`${title} Video`}
           frameBorder="0"
           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
           allowFullScreen

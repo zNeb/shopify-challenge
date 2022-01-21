@@ -3,7 +3,7 @@ import Image from 'next/image';
 import styles from './Showcase.module.css';
 
 export default function Showcase({
-  url, hdurl, media_type, copyright, date,
+  url, hdurl, media_type, copyright, date, title,
 }: Props) {
   return (
     <div className={styles.card}>
@@ -11,7 +11,12 @@ export default function Showcase({
       {media_type === 'image' && (
       <div className={styles.image}>
         {/* Use fill layout as image size is inconsistent */}
-        <Image src={hdurl || url} layout="fill" objectFit="cover" />
+        <Image
+          src={hdurl || url}
+          layout="fill"
+          objectFit="cover"
+          alt={`${title} Image`}
+        />
         <Vote date={date} />
         {copyright && (
         <span className={styles.copyright}>
@@ -29,7 +34,7 @@ export default function Showcase({
           width="100%"
           height="800"
           src={url}
-          title="YouTube video player"
+          title={`${title} Video`}
           frameBorder="0"
           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
           allowFullScreen
@@ -47,15 +52,5 @@ interface Props {
   hdurl?: string;
   copyright?: string;
   date: string;
-}
-
-export interface NasaJson {
-  date: string;
-  explanation: string;
-  hdurl: string;
-  media_type: 'image' | 'video';
-  service_version: 'v1';
   title: string;
-  url: string;
-  copyright?: string;
 }

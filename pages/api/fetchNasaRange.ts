@@ -5,7 +5,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (startDate && endDate) {
     const nasaData = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NASA_KEY}&start_date=${startDate}&end_date=${endDate}`);
     const nasaJson = await nasaData.json();
-    res.status(200).json(nasaJson);
+    res.status(200).json(nasaJson.reverse());
     return;
   }
   res.status(500).json({ error: 'invalid input' });

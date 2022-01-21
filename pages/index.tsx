@@ -10,6 +10,7 @@ import Row from 'components/Row';
 import Heading from 'components/Heading';
 import getDate from 'lib/getDate';
 import DateRange from 'components/DateRange';
+import type { DateObject } from 'components/DateRange';
 import FlexSide from 'components/FlexSide';
 import { useEffect, useState } from 'react';
 
@@ -96,9 +97,4 @@ export const getStaticProps: GetStaticProps = async () => {
 
 interface Props {
   nasaJson: NasaJson[];
-}
-
-interface DateObject {
-  startDate: Date | null;
-  endDate: Date | null;
 }

@@ -71,7 +71,7 @@ function DateRange({ range, setRange }: Props) {
   );
 }
 
-interface DateObject {
+export interface DateObject {
   startDate: Date | null;
   endDate: Date | null;
 }
